@@ -49,7 +49,9 @@ app.get("/users/top-active", async (req, res) => {
     const TopActiveUsers = [];
     for (let i = 0; i < activeUsers.length; i++) {
       let user = totalUsers.filter((el) => el._id == activeUsers[i]);
-      TopActiveUsers.push(user[0]);
+      if (user.length !== 0) {
+        TopActiveUsers.push(user[0]);
+      }
     }
 
     res.status(200).send(TopActiveUsers);
